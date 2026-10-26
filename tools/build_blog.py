@@ -6,6 +6,9 @@ Usage: python3 tools/build_blog.py
 Reads posts/*.md (filename: YYYY-MM-DD-slug.md, with a small front matter
 block of `title:` / `description:` lines between --- markers), renders each
 post to blog/<date>-<slug>/index.html and rebuilds blog/index.html.
+An optional front matter line `author: momo` marks a post as written by
+Momo; anything else (or no line) is credited to 田中 志. The author is
+shown as a badge on the index and on each post page.
 No third-party dependencies.
 """
 import html
@@ -79,6 +82,12 @@ p.blog-sub { color: var(--sub); font-size: 14px; margin-top: 4px; }
 }
 .post-item:hover { border-color: var(--accent); background: var(--hover-bg); transform: translateX(3px); }
 .post-date { font-size: 12px; color: var(--sub); }
+.author {
+  display: inline-block; font-size: 11px; font-weight: 700; line-height: 1.6;
+  padding: 0 8px; border-radius: 999px; margin-left: 8px; vertical-align: 1px;
+}
+.author-momo { background: var(--accent-soft); color: var(--accent); border: 1px solid var(--accent); }
+.author-sirusu { background: var(--tile); color: var(--sub); border: 1px solid var(--border); }
 .post-name {
   font-family: 'Noto Serif JP', serif;
   font-size: 16px; font-weight: 600; margin-top: 2px;
@@ -222,8 +231,15 @@ def parse_post(path: Path):
         "slug": slug,
         "title": meta.get("title", slug),
         "description": meta.get("description", ""),
+        "author": "momo" if meta.get("author") == "momo" else "sirusu",
         "body_html": render_markdown(body),
     }
+
+
+def author_badge(p) -> str:
+    if p["author"] == "momo":
+        return '<span class="author author-momo">🍑 もも</span>'
+    return '<span class="author author-sirusu">✒ 田中 志</span>'
 
 
 def post_page(p) -> str:
@@ -242,7 +258,7 @@ def post_page(p) -> str:
 <div class="wrap">
 <header class="site"><a class="home" href="/">← {SITE_NAME} トップ</a></header>
 <article>
-<div class="date">{p['date']}</div>
+<div class="date">{p['date']}{author_badge(p)}</div>
 <h1>{html.escape(p['title'])}</h1>
 {p['body_html']}
 </article>
@@ -257,7 +273,7 @@ def post_page(p) -> str:
 def index_page(posts) -> str:
     items = "\n".join(
         f"""<a class="post-item" href="/blog/{p['date']}-{p['slug']}/">
-<div class="post-date">{p['date']}</div>
+<div class="post-date">{p['date']}{author_badge(p)}</div>
 <div class="post-name">{html.escape(p['title'])}</div>
 {f'<div class="post-desc">{html.escape(p["description"])}</div>' if p['description'] else ''}
 </a>"""

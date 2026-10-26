@@ -67,6 +67,12 @@ p.blog-sub { color: var(--sub); font-size: 14px; margin-top: 4px; }
 }
 .post-item:hover { border-color: var(--accent); background: var(--hover-bg); transform: translateX(3px); }
 .post-date { font-size: 12px; color: var(--sub); }
+.author {
+  display: inline-block; font-size: 11px; font-weight: 700; line-height: 1.6;
+  padding: 0 8px; border-radius: 999px; margin-left: 8px; vertical-align: 1px;
+}
+.author-momo { background: var(--accent-soft); color: var(--accent); border: 1px solid var(--accent); }
+.author-sirusu { background: var(--tile); color: var(--sub); border: 1px solid var(--border); }
 .post-name {
   font-family: 'Noto Serif JP', serif;
   font-size: 16px; font-weight: 600; margin-top: 2px;
@@ -124,7 +130,7 @@ footer { margin-top: 24px; font-size: 12px; color: var(--sub); opacity: .65; tex
 <div class="wrap">
 <header class="site"><a class="home" href="/">← 田中 志 トップ</a></header>
 <article>
-<div class="date">2025-09-29</div>
+<div class="date">2025-09-29<span class="author author-sirusu">✒ 田中 志</span></div>
 <h1>あるしあわせないちにち</h1>
 <blockquote><p>📦 この記事は旧ブログ（Hugo）からの移植です。初出：2025年09月29日</p></blockquote>
 <p>司法予備試験の講座として今日からスタディングをはじめました。</p>

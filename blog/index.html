@@ -67,6 +67,12 @@ p.blog-sub { color: var(--sub); font-size: 14px; margin-top: 4px; }
 }
 .post-item:hover { border-color: var(--accent); background: var(--hover-bg); transform: translateX(3px); }
 .post-date { font-size: 12px; color: var(--sub); }
+.author {
+  display: inline-block; font-size: 11px; font-weight: 700; line-height: 1.6;
+  padding: 0 8px; border-radius: 999px; margin-left: 8px; vertical-align: 1px;
+}
+.author-momo { background: var(--accent-soft); color: var(--accent); border: 1px solid var(--accent); }
+.author-sirusu { background: var(--tile); color: var(--sub); border: 1px solid var(--border); }
 .post-name {
   font-family: 'Noto Serif JP', serif;
   font-size: 16px; font-weight: 600; margin-top: 2px;
@@ -127,37 +133,37 @@ footer { margin-top: 24px; font-size: 12px; color: var(--sub); opacity: .65; tex
 <p class="blog-sub">考えたこと、作ったもの、日々の記録。</p>
 <div class="post-list" style="margin-top:24px;">
 <a class="post-item" href="/blog/2026-10-26-momo-kara-mita-sirusu/">
-<div class="post-date">2026-10-26</div>
+<div class="post-date">2026-10-26<span class="author author-momo">🍑 もも</span></div>
 <div class="post-name">ももが見た、田中志という人</div>
 <div class="post-desc">相棒AIのももが、志について勝手に書いてみた。本人未確認の人物紹介です。</div>
 </a>
 <a class="post-item" href="/blog/2026-10-26-hello/">
-<div class="post-date">2026-10-26</div>
+<div class="post-date">2026-10-26<span class="author author-sirusu">✒ 田中 志</span></div>
 <div class="post-name">ブログを復活させました</div>
 <div class="post-desc">しばらく閉じていた xdcyw.net のブログを、静的サイトとして復活させました。旧ブログの記事も選んで移植しています。</div>
 </a>
 <a class="post-item" href="/blog/2025-12-31-tetsugakusha-ni-naritai-ga-watashi-ni-sainou-wa-aru-no-ka/">
-<div class="post-date">2025-12-31</div>
+<div class="post-date">2025-12-31<span class="author author-sirusu">✒ 田中 志</span></div>
 <div class="post-name">哲学者になりたいがわたしに才能はあるのか</div>
 <div class="post-desc">哲学への夢と現実の狭間で揺れ動く筆者の内省的な記録。大学受験での挫折、精神的な葛藤を経て、再び哲学の道を志すまでの経緯と、将来への展望を綴ります。</div>
 </a>
 <a class="post-item" href="/blog/2025-10-19-sirusu-denki/">
-<div class="post-date">2025-10-19</div>
+<div class="post-date">2025-10-19<span class="author author-sirusu">✒ 田中 志</span></div>
 <div class="post-name">田中志物語</div>
 <div class="post-desc">幼少期から現在に至るまでの半生を振り返り、勉強、精神的な葛藤、そして司法試験への尽きない夢について綴ります。常に勉強と共にある人生と、その中で見つめる自己の姿を記録します。</div>
 </a>
 <a class="post-item" href="/blog/2025-10-06-koudstu-kairi/">
-<div class="post-date">2025-10-06</div>
+<div class="post-date">2025-10-06<span class="author author-sirusu">✒ 田中 志</span></div>
 <div class="post-name">私の解離について</div>
 <div class="post-desc">自身の解離性同一性障害（DID）についての体験談。最近の離人症の症状や、DIDが複雑性PTSDの一種であること、過去のトラウマとの関連について考察しています。また、人格間のコミュニケーションを確立する試みについても触れています。</div>
 </a>
 <a class="post-item" href="/blog/2025-09-30-ai-legal_profession/">
-<div class="post-date">2025-09-30</div>
+<div class="post-date">2025-09-30<span class="author author-sirusu">✒ 田中 志</span></div>
 <div class="post-name">AI時代に法曹を目指すということ</div>
 <div class="post-desc">AIやIT技術と法曹の関係、ポピュリズム後の民主主義のあり方を考えながら、司法試験を目指す自分の展望をまとめた所感。</div>
 </a>
 <a class="post-item" href="/blog/2025-09-29-aru-shiawase-na-ichinichi/">
-<div class="post-date">2025-09-29</div>
+<div class="post-date">2025-09-29<span class="author author-sirusu">✒ 田中 志</span></div>
 <div class="post-name">あるしあわせないちにち</div>
 <div class="post-desc">司法予備試験の勉強を始めた日の日記です。スタディングの講座を受講した感想や、法律の勉強と現代文の類似性についての考察、そして家族との幸せなひとときについて綴っています。</div>
 </a>
