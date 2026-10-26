@@ -24,28 +24,42 @@ BLOG_SUB = "考えたこと、作ったもの、日々の記録。"
 PAGE_CSS = """
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
-  --bg: #f6f5f2; --surface: #ffffff; --text: #16161a; --sub: #6b6b70;
-  --border: #e7e4dc; --accent: #b3402a; --tile: #f1efe9;
-  --shadow: 0 12px 40px rgba(30, 25, 20, .07);
+  --bg1: #fff6f1; --bg2: #fdf0f4; --bg3: #eef4fd;
+  --dot: rgba(223, 92, 138, .14);
+  --surface: #ffffff; --text: #2c2230; --sub: #8d7484;
+  --border: #f2d7de; --accent: #df5c8a; --accent-soft: #fbe7ee;
+  --blue: #7ea6d8; --yellow: #f0b23e;
+  --tile: #fdf0f3; --hover-bg: #fff7fa;
+  --shadow: 0 18px 48px rgba(223, 92, 138, .13);
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #101014; --surface: #17171c; --text: #ececec; --sub: #9a9aa2;
-    --border: #26262e; --accent: #e0684e; --tile: #1f1f26;
-    --shadow: 0 12px 40px rgba(0, 0, 0, .45);
+    --bg1: #1a1224; --bg2: #171222; --bg3: #11151f;
+    --dot: rgba(240, 139, 180, .13);
+    --surface: #211829; --text: #f4eaef; --sub: #a48fa3;
+    --border: #3d2c40; --accent: #f08bb4; --accent-soft: #38222f;
+    --tile: #2c2033; --hover-bg: #2a1e30;
+    --shadow: 0 18px 48px rgba(0, 0, 0, .5);
   }
 }
+::selection { background: var(--accent-soft); }
 body {
-  background: var(--bg);
-  background-image: radial-gradient(rgba(120, 110, 90, .13) 1px, transparent 1px);
-  background-size: 22px 22px;
+  background: linear-gradient(155deg, var(--bg1), var(--bg2) 45%, var(--bg3));
   color: var(--text);
   font-family: 'Inter', 'Noto Sans JP', sans-serif;
   font-size: 15px; line-height: 1.7;
   display: flex; flex-direction: column; align-items: center;
   padding: 48px 20px; min-height: 100vh;
+  position: relative;
 }
-.wrap { width: 100%; max-width: 680px; }
+body::before {
+  content: "";
+  position: fixed; inset: 0;
+  background-image: radial-gradient(var(--dot) 1.2px, transparent 1.2px);
+  background-size: 22px 22px;
+  pointer-events: none;
+}
+.wrap { width: 100%; max-width: 680px; position: relative; }
 header.site { margin-bottom: 28px; }
 header.site a.home {
   color: var(--sub); text-decoration: none; font-size: 13px;
@@ -59,17 +73,27 @@ p.blog-sub { color: var(--sub); font-size: 14px; margin-top: 4px; }
 .post-list { display: flex; flex-direction: column; gap: 10px; }
 .post-item {
   display: block; background: var(--surface); border: 1px solid var(--border);
-  border-radius: 10px; padding: 16px 18px; text-decoration: none; color: var(--text);
+  border-radius: 12px; padding: 16px 18px; text-decoration: none; color: var(--text);
   box-shadow: var(--shadow);
-  transition: border-color .15s, transform .15s;
+  transition: border-color .15s, transform .15s, background .15s;
 }
-.post-item:hover { border-color: var(--accent); transform: translateX(3px); }
+.post-item:hover { border-color: var(--accent); background: var(--hover-bg); transform: translateX(3px); }
 .post-date { font-size: 12px; color: var(--sub); }
-.post-name { font-size: 16px; font-weight: 600; margin-top: 2px; }
+.post-name {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 16px; font-weight: 600; margin-top: 2px;
+}
 .post-desc { font-size: 13px; color: var(--sub); margin-top: 2px; }
 article {
+  position: relative;
   background: var(--surface); border: 1px solid var(--border);
-  border-radius: 18px; padding: 40px 36px; box-shadow: var(--shadow);
+  border-radius: 20px; padding: 44px 36px 40px; box-shadow: var(--shadow);
+  overflow: hidden;
+}
+article::before {
+  content: "";
+  position: absolute; top: 0; left: 0; right: 0; height: 5px;
+  background: linear-gradient(90deg, var(--accent) 0 34%, var(--blue) 34% 67%, var(--yellow) 67% 100%);
 }
 article .date { font-size: 13px; color: var(--sub); }
 article h1 {
@@ -78,13 +102,15 @@ article h1 {
 }
 article h2 {
   font-family: 'Noto Serif JP', serif;
-  font-size: 19px; font-weight: 700; margin: 32px 0 12px;
+  font-size: 19px; font-weight: 700; margin: 34px 0 12px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--accent-soft);
 }
 article h3 { font-size: 16px; font-weight: 700; margin: 24px 0 10px; }
 article p { margin: 0 0 16px; line-height: 1.9; }
 article ul, article ol { margin: 0 0 16px 1.4em; line-height: 1.9; }
 article blockquote {
-  border-left: 3px solid var(--accent); padding-left: 14px;
+  border-left: 3px solid var(--accent); padding: 2px 0 2px 14px;
   color: var(--sub); margin: 0 0 16px;
 }
 article code {
@@ -92,18 +118,18 @@ article code {
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px;
 }
 article pre {
-  background: #0d0d12; color: #e8e8e8; border-radius: 8px;
+  background: #17101f; color: #f3e6ec; border-radius: 10px;
   padding: 16px; overflow-x: auto; margin: 0 0 16px;
 }
 article pre code { background: none; padding: 0; color: inherit; }
 article a { color: var(--accent); }
-article hr { border: none; border-top: 1px solid var(--border); margin: 28px 0; }
-article img { max-width: 100%; border-radius: 8px; }
+article hr { border: none; border-top: 1px dashed var(--border); margin: 28px 0; }
+article img { max-width: 100%; border-radius: 10px; }
 nav.post-nav { margin-top: 24px; font-size: 14px; }
 nav.post-nav a { color: var(--sub); text-decoration: none; }
 nav.post-nav a:hover { color: var(--accent); }
-footer { margin-top: 24px; font-size: 12px; color: var(--sub); opacity: .6; text-align: center; }
-@media (max-width: 560px) { article { padding: 28px 20px; } }
+footer { margin-top: 24px; font-size: 12px; color: var(--sub); opacity: .65; text-align: center; }
+@media (max-width: 560px) { article { padding: 32px 20px 28px; } }
 """
 
 FONTS = """<link rel="preconnect" href="https://fonts.googleapis.com">

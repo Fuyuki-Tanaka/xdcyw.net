@@ -9,7 +9,7 @@
 <meta property="og:description" content="開発者・司法試験受験生">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@Sirusu_Tanaka">
-<meta name="theme-color" content="#f6f5f2">
+<meta name="theme-color" content="#fdf0f4">
 <link rel="icon" href="/assets/momo.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,32 +18,44 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg: #f6f5f2;
+  --bg1: #fff6f1;
+  --bg2: #fdf0f4;
+  --bg3: #eef4fd;
+  --dot: rgba(223, 92, 138, .14);
   --surface: #ffffff;
-  --text: #16161a;
-  --sub: #6b6b70;
-  --border: #e7e4dc;
-  --accent: #b3402a;
-  --tile: #f1efe9;
-  --shadow: 0 12px 40px rgba(30, 25, 20, .07);
+  --text: #2c2230;
+  --sub: #8d7484;
+  --border: #f2d7de;
+  --accent: #df5c8a;
+  --accent-soft: #fbe7ee;
+  --blue: #7ea6d8;
+  --yellow: #f0b23e;
+  --tile: #fdf0f3;
+  --hover-bg: #fff7fa;
+  --shadow: 0 18px 48px rgba(223, 92, 138, .13);
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #101014;
-    --surface: #17171c;
-    --text: #ececec;
-    --sub: #9a9aa2;
-    --border: #26262e;
-    --accent: #e0684e;
-    --tile: #1f1f26;
-    --shadow: 0 12px 40px rgba(0, 0, 0, .45);
+    --bg1: #1a1224;
+    --bg2: #171222;
+    --bg3: #11151f;
+    --dot: rgba(240, 139, 180, .13);
+    --surface: #211829;
+    --text: #f4eaef;
+    --sub: #a48fa3;
+    --border: #3d2c40;
+    --accent: #f08bb4;
+    --accent-soft: #38222f;
+    --tile: #2c2033;
+    --hover-bg: #2a1e30;
+    --shadow: 0 18px 48px rgba(0, 0, 0, .5);
   }
 }
 
+::selection { background: var(--accent-soft); }
+
 body {
-  background: var(--bg);
-  background-image: radial-gradient(rgba(120, 110, 90, .13) 1px, transparent 1px);
-  background-size: 22px 22px;
+  background: linear-gradient(155deg, var(--bg1), var(--bg2) 45%, var(--bg3));
   color: var(--text);
   font-family: 'Inter', 'Noto Sans JP', sans-serif;
   font-size: 15px;
@@ -54,6 +66,15 @@ body {
   align-items: center;
   justify-content: center;
   padding: 48px 20px;
+  position: relative;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(var(--dot) 1.2px, transparent 1.2px);
+  background-size: 22px 22px;
+  pointer-events: none;
 }
 
 @keyframes rise {
@@ -62,34 +83,48 @@ body {
 }
 @media (prefers-reduced-motion: reduce) {
   .card, footer { animation: none; }
+  .avatar { transform: none; }
 }
 
 .card {
+  position: relative;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 18px;
+  border-radius: 20px;
   box-shadow: var(--shadow);
   width: 100%;
   max-width: 460px;
-  padding: 44px 40px 40px;
+  padding: 46px 40px 40px;
+  overflow: hidden;
   animation: rise .5s ease both;
+}
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, var(--accent) 0 34%, var(--blue) 34% 67%, var(--yellow) 67% 100%);
 }
 
 .avatar {
-  width: 92px;
-  height: 92px;
-  border-radius: 24px;
-  border: 1px solid var(--border);
-  background: var(--tile);
+  width: 96px;
+  height: 96px;
+  border-radius: 26px;
+  border: 2px solid var(--accent-soft);
+  background: var(--accent-soft);
   padding: 6px;
   image-rendering: pixelated;
   margin-bottom: 22px;
+  transform: rotate(-2deg);
+  transition: transform .25s ease;
 }
+.avatar:hover { transform: rotate(0deg) scale(1.03); }
 
 .line {
-  width: 28px;
-  height: 2px;
-  background: var(--accent);
+  width: 30px;
+  height: 3px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--yellow));
   margin-bottom: 14px;
 }
 
@@ -114,7 +149,7 @@ body {
   line-height: 1.9;
   margin-bottom: 28px;
   padding-bottom: 28px;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px dashed var(--border);
 }
 
 .links {
@@ -129,7 +164,7 @@ body {
   gap: 12px;
   padding: 12px 14px;
   border: 1px solid var(--border);
-  border-radius: 10px;
+  border-radius: 12px;
   text-decoration: none;
   color: var(--text);
   font-size: 14px;
@@ -139,13 +174,14 @@ body {
 
 .link-item:hover {
   border-color: var(--accent);
+  background: var(--hover-bg);
   transform: translateX(3px);
 }
 
 .link-icon {
   width: 32px;
   height: 32px;
-  border-radius: 6px;
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -162,7 +198,7 @@ footer {
   margin-top: 24px;
   font-size: 12px;
   color: var(--sub);
-  opacity: .6;
+  opacity: .65;
   animation: rise .5s .1s ease both;
 }
 </style>
@@ -182,8 +218,8 @@ footer {
     <a class="link-item" href="https://conceptism.xdcyw.net" target="_blank" rel="noopener">
       <div class="link-icon">
         <svg width="16" height="16" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="12" cy="12" r="9" fill="none" stroke="#b3402a" stroke-width="2"/>
-          <line x1="12" y1="3" x2="12" y2="21" stroke="#b3402a" stroke-width="2"/>
+          <circle cx="12" cy="12" r="9" fill="none" stroke="#df5c8a" stroke-width="2"/>
+          <line x1="12" y1="3" x2="12" y2="21" stroke="#df5c8a" stroke-width="2"/>
         </svg>
       </div>
       <div class="link-label">
