@@ -247,7 +247,7 @@ def post_page(p) -> str:
 {p['body_html']}
 </article>
 <nav class="post-nav"><a href="/blog/">← 記事一覧へ</a></nav>
-<footer>© 2026 田中 芙雪</footer>
+<footer>© 2026 田中 志</footer>
 </div>
 </body>
 </html>
@@ -282,7 +282,7 @@ def index_page(posts) -> str:
 <div class="post-list" style="margin-top:24px;">
 {items}
 </div>
-<footer>© 2026 田中 芙雪</footer>
+<footer>© 2026 田中 志</footer>
 </div>
 </body>
 </html>
