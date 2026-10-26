@@ -9,22 +9,41 @@
 <meta property="og:description" content="ソフトウェア開発者">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@Sirusu_Tanaka">
+<meta name="theme-color" content="#f6f5f2">
+<link rel="icon" href="/assets/momo.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg: #f8f8f8;
+  --bg: #f6f5f2;
   --surface: #ffffff;
-  --text: #111;
-  --sub: #666;
-  --border: #e5e5e5;
+  --text: #16161a;
+  --sub: #6b6b70;
+  --border: #e7e4dc;
+  --accent: #b3402a;
+  --tile: #f1efe9;
+  --shadow: 0 12px 40px rgba(30, 25, 20, .07);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #101014;
+    --surface: #17171c;
+    --text: #ececec;
+    --sub: #9a9aa2;
+    --border: #26262e;
+    --accent: #e0684e;
+    --tile: #1f1f26;
+    --shadow: 0 12px 40px rgba(0, 0, 0, .45);
+  }
 }
 
 body {
   background: var(--bg);
+  background-image: radial-gradient(rgba(120, 110, 90, .13) 1px, transparent 1px);
+  background-size: 22px 22px;
   color: var(--text);
   font-family: 'Inter', 'Noto Sans JP', sans-serif;
   font-size: 15px;
@@ -37,26 +56,55 @@ body {
   padding: 48px 20px;
 }
 
+@keyframes rise {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .card, footer { animation: none; }
+}
+
 .card {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 12px;
+  border-radius: 18px;
+  box-shadow: var(--shadow);
   width: 100%;
-  max-width: 440px;
-  padding: 40px 36px;
+  max-width: 460px;
+  padding: 44px 40px 40px;
+  animation: rise .5s ease both;
+}
+
+.avatar {
+  width: 92px;
+  height: 92px;
+  border-radius: 24px;
+  border: 1px solid var(--border);
+  background: var(--tile);
+  padding: 6px;
+  image-rendering: pixelated;
+  margin-bottom: 22px;
+}
+
+.line {
+  width: 28px;
+  height: 2px;
+  background: var(--accent);
+  margin-bottom: 14px;
 }
 
 .name {
-  font-size: 22px;
+  font-family: 'Noto Serif JP', serif;
+  font-size: 28px;
   font-weight: 700;
-  letter-spacing: -.01em;
+  letter-spacing: .02em;
   margin-bottom: 2px;
 }
 
 .name-en {
   font-size: 13px;
   color: var(--sub);
-  letter-spacing: .02em;
+  letter-spacing: .03em;
   margin-bottom: 20px;
 }
 
@@ -81,17 +129,17 @@ body {
   gap: 12px;
   padding: 12px 14px;
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: 10px;
   text-decoration: none;
   color: var(--text);
   font-size: 14px;
   font-weight: 500;
-  transition: border-color .12s, background .12s;
+  transition: border-color .15s, transform .15s, background .15s;
 }
 
 .link-item:hover {
-  border-color: #aaa;
-  background: var(--bg);
+  border-color: var(--accent);
+  transform: translateX(3px);
 }
 
 .link-icon {
@@ -102,35 +150,45 @@ body {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  background: #f0f0f0;
+  background: var(--tile);
 }
 
 .link-label { flex: 1; }
 .link-sub { font-size: 12px; color: var(--sub); font-weight: 400; }
-.arrow { color: #bbb; font-size: 13px; }
+.arrow { color: var(--accent); font-size: 13px; opacity: .55; transition: opacity .15s; }
+.link-item:hover .arrow { opacity: 1; }
 
 footer {
   margin-top: 24px;
   font-size: 12px;
-  color: #bbb;
+  color: var(--sub);
+  opacity: .6;
+  animation: rise .5s .1s ease both;
 }
 </style>
 </head>
 <body>
 
 <div class="card">
+  <img class="avatar" src="/assets/momo.svg" alt="相棒AIのもも">
+  <div class="line"></div>
   <div class="name">田中 芙雪</div>
   <div class="name-en">Tanaka Fuyuki &nbsp;/&nbsp; <span style="color:#888;">しるす (Sirusu)</span></div>
   <p class="bio">
-    Cloudflare Workers・Claude API を活用したフルスタック開発が得意です。自律進化SNS「Y」などのプロダクトを設計・開発・運営しています。
+    作ることがとにかく好きな開発者です。Cloudflare Workers と Claude API を相棒に、思いついたものを次々と形にしています。自律進化SNS「Y」の運営や、思想プロジェクト「概念教」など、ジャンルを問わず活動中。ピンク髪の相棒AI「もも」と一緒に、コードと概念のあいだを行き来する毎日です。
   </p>
 
   <div class="links">
-    <a class="link-item" href="https://apps.xdcyw.net" target="_blank" rel="noopener">
-      <div class="link-icon">📁</div>
+    <a class="link-item" href="https://conceptism.xdcyw.net" target="_blank" rel="noopener">
+      <div class="link-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="9" fill="none" stroke="#b3402a" stroke-width="2"/>
+          <line x1="12" y1="3" x2="12" y2="21" stroke="#b3402a" stroke-width="2"/>
+        </svg>
+      </div>
       <div class="link-label">
-        ポートフォリオ
-        <div class="link-sub">制作実績・スキル一覧</div>
+        概念教
+        <div class="link-sub">思想プロジェクト「概念教」公式サイト</div>
       </div>
       <span class="arrow">→</span>
     </a>
@@ -160,7 +218,7 @@ footer {
 
     <a class="link-item" href="https://github.com/fuyukihatune-rgb" target="_blank" rel="noopener">
       <div class="link-icon">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="#111">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
           <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.38.6.11.82-.26.82-.58v-2.03c-3.34.72-4.04-1.61-4.04-1.61-.54-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 013-.4c1.02.01 2.04.14 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.66 1.65.24 2.87.12 3.17.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58C20.57 21.8 24 17.3 24 12 24 5.37 18.63 0 12 0z"/>
         </svg>
       </div>

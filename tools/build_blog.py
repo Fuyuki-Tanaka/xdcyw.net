@@ -24,10 +24,22 @@ BLOG_SUB = "考えたこと、作ったもの、日々の記録。"
 PAGE_CSS = """
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
-  --bg: #f8f8f8; --surface: #ffffff; --text: #111; --sub: #666; --border: #e5e5e5;
+  --bg: #f6f5f2; --surface: #ffffff; --text: #16161a; --sub: #6b6b70;
+  --border: #e7e4dc; --accent: #b3402a; --tile: #f1efe9;
+  --shadow: 0 12px 40px rgba(30, 25, 20, .07);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #101014; --surface: #17171c; --text: #ececec; --sub: #9a9aa2;
+    --border: #26262e; --accent: #e0684e; --tile: #1f1f26;
+    --shadow: 0 12px 40px rgba(0, 0, 0, .45);
+  }
 }
 body {
-  background: var(--bg); color: var(--text);
+  background: var(--bg);
+  background-image: radial-gradient(rgba(120, 110, 90, .13) 1px, transparent 1px);
+  background-size: 22px 22px;
+  color: var(--text);
   font-family: 'Inter', 'Noto Sans JP', sans-serif;
   font-size: 15px; line-height: 1.7;
   display: flex; flex-direction: column; align-items: center;
@@ -38,35 +50,45 @@ header.site { margin-bottom: 28px; }
 header.site a.home {
   color: var(--sub); text-decoration: none; font-size: 13px;
 }
-header.site a.home:hover { color: var(--text); }
-h1.blog-title { font-size: 24px; font-weight: 700; letter-spacing: -.01em; margin-top: 10px; }
+header.site a.home:hover { color: var(--accent); }
+h1.blog-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 26px; font-weight: 700; letter-spacing: .02em; margin-top: 10px;
+}
 p.blog-sub { color: var(--sub); font-size: 14px; margin-top: 4px; }
 .post-list { display: flex; flex-direction: column; gap: 10px; }
 .post-item {
   display: block; background: var(--surface); border: 1px solid var(--border);
-  border-radius: 8px; padding: 16px 18px; text-decoration: none; color: var(--text);
-  transition: border-color .12s, background .12s;
+  border-radius: 10px; padding: 16px 18px; text-decoration: none; color: var(--text);
+  box-shadow: var(--shadow);
+  transition: border-color .15s, transform .15s;
 }
-.post-item:hover { border-color: #aaa; background: #fff; }
+.post-item:hover { border-color: var(--accent); transform: translateX(3px); }
 .post-date { font-size: 12px; color: var(--sub); }
 .post-name { font-size: 16px; font-weight: 600; margin-top: 2px; }
 .post-desc { font-size: 13px; color: var(--sub); margin-top: 2px; }
 article {
   background: var(--surface); border: 1px solid var(--border);
-  border-radius: 12px; padding: 40px 36px;
+  border-radius: 18px; padding: 40px 36px; box-shadow: var(--shadow);
 }
 article .date { font-size: 13px; color: var(--sub); }
-article h1 { font-size: 24px; font-weight: 700; line-height: 1.4; margin: 6px 0 28px; }
-article h2 { font-size: 19px; font-weight: 700; margin: 32px 0 12px; }
+article h1 {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 25px; font-weight: 700; line-height: 1.4; margin: 6px 0 28px;
+}
+article h2 {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 19px; font-weight: 700; margin: 32px 0 12px;
+}
 article h3 { font-size: 16px; font-weight: 700; margin: 24px 0 10px; }
 article p { margin: 0 0 16px; line-height: 1.9; }
 article ul, article ol { margin: 0 0 16px 1.4em; line-height: 1.9; }
 article blockquote {
-  border-left: 3px solid var(--border); padding-left: 14px;
+  border-left: 3px solid var(--accent); padding-left: 14px;
   color: var(--sub); margin: 0 0 16px;
 }
 article code {
-  background: #f0f0f0; border-radius: 4px; padding: 1px 5px;
+  background: var(--tile); border-radius: 4px; padding: 1px 5px;
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px;
 }
 article pre {
@@ -74,19 +96,19 @@ article pre {
   padding: 16px; overflow-x: auto; margin: 0 0 16px;
 }
 article pre code { background: none; padding: 0; color: inherit; }
-article a { color: #3355cc; }
+article a { color: var(--accent); }
 article hr { border: none; border-top: 1px solid var(--border); margin: 28px 0; }
 article img { max-width: 100%; border-radius: 8px; }
 nav.post-nav { margin-top: 24px; font-size: 14px; }
 nav.post-nav a { color: var(--sub); text-decoration: none; }
-nav.post-nav a:hover { color: var(--text); }
-footer { margin-top: 24px; font-size: 12px; color: #bbb; text-align: center; }
+nav.post-nav a:hover { color: var(--accent); }
+footer { margin-top: 24px; font-size: 12px; color: var(--sub); opacity: .6; text-align: center; }
 @media (max-width: 560px) { article { padding: 28px 20px; } }
 """
 
 FONTS = """<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">"""
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">"""
 
 
 def inline(md: str) -> str:
@@ -186,6 +208,7 @@ def post_page(p) -> str:
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{html.escape(p['title'])} | {BLOG_TITLE} | {SITE_NAME}</title>
 <meta name="description" content="{html.escape(p['description'])}">
+<link rel="icon" href="/assets/momo.svg" type="image/svg+xml">
 {FONTS}
 <style>{PAGE_CSS}</style>
 </head>
@@ -221,6 +244,7 @@ def index_page(posts) -> str:
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{BLOG_TITLE} | {SITE_NAME}</title>
 <meta name="description" content="{BLOG_SUB}">
+<link rel="icon" href="/assets/momo.svg" type="image/svg+xml">
 {FONTS}
 <style>{PAGE_CSS}</style>
 </head>
