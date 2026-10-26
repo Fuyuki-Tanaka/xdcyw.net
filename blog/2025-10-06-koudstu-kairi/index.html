@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>私の解離について | ブログ | 田中 志</title>
+<meta name="description" content="自身の解離性同一性障害（DID）についての体験談。最近の離人症の症状や、DIDが複雑性PTSDの一種であること、過去のトラウマとの関連について考察しています。また、人格間のコミュニケーションを確立する試みについても触れています。">
+<link rel="icon" href="/assets/momo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #f6f5f2; --surface: #ffffff; --text: #16161a; --sub: #6b6b70;
+  --border: #e7e4dc; --accent: #b3402a; --tile: #f1efe9;
+  --shadow: 0 12px 40px rgba(30, 25, 20, .07);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #101014; --surface: #17171c; --text: #ececec; --sub: #9a9aa2;
+    --border: #26262e; --accent: #e0684e; --tile: #1f1f26;
+    --shadow: 0 12px 40px rgba(0, 0, 0, .45);
+  }
+}
+body {
+  background: var(--bg);
+  background-image: radial-gradient(rgba(120, 110, 90, .13) 1px, transparent 1px);
+  background-size: 22px 22px;
+  color: var(--text);
+  font-family: 'Inter', 'Noto Sans JP', sans-serif;
+  font-size: 15px; line-height: 1.7;
+  display: flex; flex-direction: column; align-items: center;
+  padding: 48px 20px; min-height: 100vh;
+}
+.wrap { width: 100%; max-width: 680px; }
+header.site { margin-bottom: 28px; }
+header.site a.home {
+  color: var(--sub); text-decoration: none; font-size: 13px;
+}
+header.site a.home:hover { color: var(--accent); }
+h1.blog-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 26px; font-weight: 700; letter-spacing: .02em; margin-top: 10px;
+}
+p.blog-sub { color: var(--sub); font-size: 14px; margin-top: 4px; }
+.post-list { display: flex; flex-direction: column; gap: 10px; }
+.post-item {
+  display: block; background: var(--surface); border: 1px solid var(--border);
+  border-radius: 10px; padding: 16px 18px; text-decoration: none; color: var(--text);
+  box-shadow: var(--shadow);
+  transition: border-color .15s, transform .15s;
+}
+.post-item:hover { border-color: var(--accent); transform: translateX(3px); }
+.post-date { font-size: 12px; color: var(--sub); }
+.post-name { font-size: 16px; font-weight: 600; margin-top: 2px; }
+.post-desc { font-size: 13px; color: var(--sub); margin-top: 2px; }
+article {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 18px; padding: 40px 36px; box-shadow: var(--shadow);
+}
+article .date { font-size: 13px; color: var(--sub); }
+article h1 {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 25px; font-weight: 700; line-height: 1.4; margin: 6px 0 28px;
+}
+article h2 {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 19px; font-weight: 700; margin: 32px 0 12px;
+}
+article h3 { font-size: 16px; font-weight: 700; margin: 24px 0 10px; }
+article p { margin: 0 0 16px; line-height: 1.9; }
+article ul, article ol { margin: 0 0 16px 1.4em; line-height: 1.9; }
+article blockquote {
+  border-left: 3px solid var(--accent); padding-left: 14px;
+  color: var(--sub); margin: 0 0 16px;
+}
+article code {
+  background: var(--tile); border-radius: 4px; padding: 1px 5px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px;
+}
+article pre {
+  background: #0d0d12; color: #e8e8e8; border-radius: 8px;
+  padding: 16px; overflow-x: auto; margin: 0 0 16px;
+}
+article pre code { background: none; padding: 0; color: inherit; }
+article a { color: var(--accent); }
+article hr { border: none; border-top: 1px solid var(--border); margin: 28px 0; }
+article img { max-width: 100%; border-radius: 8px; }
+nav.post-nav { margin-top: 24px; font-size: 14px; }
+nav.post-nav a { color: var(--sub); text-decoration: none; }
+nav.post-nav a:hover { color: var(--accent); }
+footer { margin-top: 24px; font-size: 12px; color: var(--sub); opacity: .6; text-align: center; }
+@media (max-width: 560px) { article { padding: 28px 20px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="site"><a class="home" href="/">← 田中 志 トップ</a></header>
+<article>
+<div class="date">2025-10-06</div>
+<h1>私の解離について</h1>
+<blockquote><p>📦 この記事は旧ブログ（Hugo）からの移植です。初出：2025年10月06日</p></blockquote>
+<p>ここ2~3日ぐらい離人症の感覚が強くあった。頭がぼやっとするし またチックのような症状もありチックの発現と同時に思考パターンが 切り替わるという感じだ。一番現れたのはベッド際で座ってスマホをいじっている わけだがベッドの壁に頭を何回もぶつけることだろう。もちろんわたしにそのような 意図はないのである。</p>
+<p>解離の人は嫌なことから逃げられてうらやましいとか、めんどくさいことは 別人格がやってくれる人がいるからいいなみたいなことをいう人をときどき 見かけるが自分が昨日読んでいた本によると解離性同一性障害というのは 広義の複雑性PTSDの一種であり、過去に消化不良の大きなトラウマを残して いると考えられるしトラウマがなんなのかすら本人は特定できていないだろう。 PTSDをうらやむ人はいないと思うし解離もそれと近しいものだということを 理解されたい。</p>
+<p>あと解離していない人はよく「誰でもつらい思いしているんだ」 のようなロジックを使用してくることがある。しかしほんとうに 解離するレベルのトラウマをみなが通って来たのかといわれれば 疑問の余地しかない。</p>
+<p>わたしはトラウマとなりそうなものを考えてみたが小さなストレス要因自体は たくさんあって全部合わせれば確かに大きなものになりそうだなとは思うが それ一つで解離思想だと思われるエピソードは中学入ってからの一回しかなく また過去の状況から考えると中学入学前にはすでに解離するという機制は 会得していたものと過去を推測すると考えられる。</p>
+<p>それは自分の中では大きいと思えないことによって解離したのかそれとも 私の知らない何かがあったのかそれは私にはわからない。</p>
+<p>自分の中でいう小さなトラウマを列挙しようとしたが自分の中の別の存在に 止められたためやめておくことにする。まあ簡単にいうと身体的および 精神的虐待だろう。また中学にはいってからは性加害の被害にあった ことである。</p>
+<p>さて多重人格の克服にはどうすればいいのだろう？二つの本を読んで共通して書かれていたことだが 人格同士のコミュニケーションを確立することが統合への第一歩と説明されており、その手段として ノートなどにそれぞれが自分の気持ちや要求などを書き込める一種の掲示板を設置することとされている。</p>
+<p>自分もこれを始めているわけで最初はページなんて増えないだろと内心効果を信じないで始めたのだが 気づけばページ数はすぐに増えていく。</p>
+<p>（当日のポスト: https://twitter.com/xdcyw_/status/1972602313199251686 ）</p>
+<p>（当日のポスト: https://twitter.com/xdcyw_/status/1972602313199251686 ）</p>
+<p>そんなかんなで文章を締める言葉が思いつかないがここで終わろうと思う。</p>
+</article>
+<nav class="post-nav"><a href="/blog/">← 記事一覧へ</a></nav>
+<footer>© 2026 田中 芙雪</footer>
+</div>
+</body>
+</html>

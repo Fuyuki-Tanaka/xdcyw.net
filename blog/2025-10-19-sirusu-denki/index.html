@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>田中志物語 | ブログ | 田中 志</title>
+<meta name="description" content="幼少期から現在に至るまでの半生を振り返り、勉強、精神的な葛藤、そして司法試験への尽きない夢について綴ります。常に勉強と共にある人生と、その中で見つめる自己の姿を記録します。">
+<link rel="icon" href="/assets/momo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #f6f5f2; --surface: #ffffff; --text: #16161a; --sub: #6b6b70;
+  --border: #e7e4dc; --accent: #b3402a; --tile: #f1efe9;
+  --shadow: 0 12px 40px rgba(30, 25, 20, .07);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #101014; --surface: #17171c; --text: #ececec; --sub: #9a9aa2;
+    --border: #26262e; --accent: #e0684e; --tile: #1f1f26;
+    --shadow: 0 12px 40px rgba(0, 0, 0, .45);
+  }
+}
+body {
+  background: var(--bg);
+  background-image: radial-gradient(rgba(120, 110, 90, .13) 1px, transparent 1px);
+  background-size: 22px 22px;
+  color: var(--text);
+  font-family: 'Inter', 'Noto Sans JP', sans-serif;
+  font-size: 15px; line-height: 1.7;
+  display: flex; flex-direction: column; align-items: center;
+  padding: 48px 20px; min-height: 100vh;
+}
+.wrap { width: 100%; max-width: 680px; }
+header.site { margin-bottom: 28px; }
+header.site a.home {
+  color: var(--sub); text-decoration: none; font-size: 13px;
+}
+header.site a.home:hover { color: var(--accent); }
+h1.blog-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 26px; font-weight: 700; letter-spacing: .02em; margin-top: 10px;
+}
+p.blog-sub { color: var(--sub); font-size: 14px; margin-top: 4px; }
+.post-list { display: flex; flex-direction: column; gap: 10px; }
+.post-item {
+  display: block; background: var(--surface); border: 1px solid var(--border);
+  border-radius: 10px; padding: 16px 18px; text-decoration: none; color: var(--text);
+  box-shadow: var(--shadow);
+  transition: border-color .15s, transform .15s;
+}
+.post-item:hover { border-color: var(--accent); transform: translateX(3px); }
+.post-date { font-size: 12px; color: var(--sub); }
+.post-name { font-size: 16px; font-weight: 600; margin-top: 2px; }
+.post-desc { font-size: 13px; color: var(--sub); margin-top: 2px; }
+article {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 18px; padding: 40px 36px; box-shadow: var(--shadow);
+}
+article .date { font-size: 13px; color: var(--sub); }
+article h1 {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 25px; font-weight: 700; line-height: 1.4; margin: 6px 0 28px;
+}
+article h2 {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 19px; font-weight: 700; margin: 32px 0 12px;
+}
+article h3 { font-size: 16px; font-weight: 700; margin: 24px 0 10px; }
+article p { margin: 0 0 16px; line-height: 1.9; }
+article ul, article ol { margin: 0 0 16px 1.4em; line-height: 1.9; }
+article blockquote {
+  border-left: 3px solid var(--accent); padding-left: 14px;
+  color: var(--sub); margin: 0 0 16px;
+}
+article code {
+  background: var(--tile); border-radius: 4px; padding: 1px 5px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px;
+}
+article pre {
+  background: #0d0d12; color: #e8e8e8; border-radius: 8px;
+  padding: 16px; overflow-x: auto; margin: 0 0 16px;
+}
+article pre code { background: none; padding: 0; color: inherit; }
+article a { color: var(--accent); }
+article hr { border: none; border-top: 1px solid var(--border); margin: 28px 0; }
+article img { max-width: 100%; border-radius: 8px; }
+nav.post-nav { margin-top: 24px; font-size: 14px; }
+nav.post-nav a { color: var(--sub); text-decoration: none; }
+nav.post-nav a:hover { color: var(--accent); }
+footer { margin-top: 24px; font-size: 12px; color: var(--sub); opacity: .6; text-align: center; }
+@media (max-width: 560px) { article { padding: 28px 20px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="site"><a class="home" href="/">← 田中 志 トップ</a></header>
+<article>
+<div class="date">2025-10-19</div>
+<h1>田中志物語</h1>
+<blockquote><p>📦 この記事は旧ブログ（Hugo）からの移植です。初出：2025年10月19日</p></blockquote>
+<p>私の人生を振り返ってみたくなったので少し文章を書きながら振り返ってみようと思う。</p>
+<p>まず生まれてから小４ぐらいまでは記憶がないため割愛する。</p>
+<p>小４から中学受験塾に入ってまあぼちぼち勉強してとりあえず中高一貫男子校に入る。</p>
+<p>そこから再び記憶がなくなり高１ぐらいから再び記憶再開。</p>
+<p>大学受験に向けて勉強開始。当初国立理系を志望するがJSミルの危害原理の概念に魅せられ 政治学を学びたくなる。また、理系科目に適性がないと判断し文転。</p>
+<p>当時は北海道大学法学部を目指していたが高2の共通テスト同日で見るに耐えない点数を叩き出し 仕方がなく私立文系専願に切り替える。とりあえず早稲法第一志望で第二で中央法志望。</p>
+<p>高２最後の模試で中央E判定だったが春模試までの3ヶ月ぐらいでB判定まではあげる。 早稲田はDぐらいだったと思う。高３の秋頃からメンタルに不調をきたしほとんど勉強できなくなってしまう。</p>
+<p>その頃精神科でうつ状態と診断。またそのあたりで人生で初めて医者に自分は多重人格なのではないかと 訴えたたが軽く流された。</p>
+<p>2022年12月後半頃から精神錯乱状態に陥る。また2023年1月より医療保護入院。</p>
+<p>入院していたため共通テストも私大一般受験も受けられず。</p>
+<p>その後再び記憶がない。</p>
+<p>2024年私は気づいたらとある分野の専門学校の学生となっていたが興味がなく いきたくなく司法試験を受けたくて再び法学部の受験をしたいと親に言うが一蹴される。</p>
+<p>そして再び2025年なぜか私は北海道にいた。まあ今までの記憶がないは全部嘘なのだがそれは私の 記憶ではなく人の記憶を覗いているだけで私の記憶は確かにないのでやっぱり嘘ではないのだ。</p>
+<p>そして2025年の9月からやっぱり司法試験の夢は諦められず予備試験に向けて勉強している。</p>
+<p>振り返ると私の人生は常に勉強とともにあるのだ。</p>
+<p>勉強以外に私の趣味といえば音楽とTwitter（X）ぐらいしかないしとことんつまらない自分だと思う。</p>
+<p>もっとこの世界に足をつけていたいものだ。</p>
+</article>
+<nav class="post-nav"><a href="/blog/">← 記事一覧へ</a></nav>
+<footer>© 2026 田中 芙雪</footer>
+</div>
+</body>
+</html>
