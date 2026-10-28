@@ -154,7 +154,7 @@ nav.post-nav a:hover { color: var(--accent); }
 .pn-links a.next:only-child { margin-left: auto; }
 .controls { margin-top: 22px; display: flex; flex-direction: column; gap: 10px; }
 .controls input[type="search"] {
-  width: 100%; padding: 11px 14px; font-size: 14px; font-family: inherit;
+  width: 100%; padding: 11px 14px; font-size: 16px; font-family: inherit;
   border: 1px solid var(--border); border-radius: 999px;
   background: var(--surface); color: var(--text); outline: none;
 }
