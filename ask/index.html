@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ももに聞く | 田中 志</title>
+<meta name="description" content="相棒AIももに質問できるチャット。サイトのこと、ブログのこと、概念教のことなど。">
+<meta property="og:title" content="ももに聞く | 田中 志">
+<meta property="og:description" content="相棒AIももに質問できるチャット">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@Sirusu_Tanaka">
+<meta name="theme-color" content="#fdf0f4">
+<link rel="icon" href="/assets/momo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg1: #fff6f1;
+  --bg2: #fdf0f4;
+  --bg3: #eef4fd;
+  --dot: rgba(223, 92, 138, .14);
+  --surface: #ffffff;
+  --text: #2c2230;
+  --sub: #8d7484;
+  --border: #f2d7de;
+  --accent: #df5c8a;
+  --accent-soft: #fbe7ee;
+  --blue: #7ea6d8;
+  --yellow: #f0b23e;
+  --tile: #fdf0f3;
+  --hover-bg: #fff7fa;
+  --shadow: 0 18px 48px rgba(223, 92, 138, .13);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg1: #1a1224;
+    --bg2: #171222;
+    --bg3: #11151f;
+    --dot: rgba(240, 139, 180, .13);
+    --surface: #211829;
+    --text: #f4eaef;
+    --sub: #a48fa3;
+    --border: #3d2c40;
+    --accent: #f08bb4;
+    --accent-soft: #38222f;
+    --tile: #2c2033;
+    --hover-bg: #2a1e30;
+    --shadow: 0 18px 48px rgba(0, 0, 0, .5);
+  }
+}
+
+::selection { background: var(--accent-soft); }
+
+body {
+  background: linear-gradient(155deg, var(--bg1), var(--bg2) 45%, var(--bg3));
+  color: var(--text);
+  font-family: 'Inter', 'Noto Sans JP', sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 48px 20px;
+  position: relative;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(var(--dot) 1.2px, transparent 1.2px);
+  background-size: 22px 22px;
+  pointer-events: none;
+}
+
+.wrap { width: 100%; max-width: 680px; position: relative; }
+header.site { margin-bottom: 20px; }
+header.site a.home { color: var(--sub); text-decoration: none; font-size: 13px; }
+header.site a.home:hover { color: var(--accent); }
+
+.card {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.card::before {
+  content: "";
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, var(--accent) 0 34%, var(--blue) 34% 67%, var(--yellow) 67% 100%);
+  z-index: 1;
+}
+
+.chat-head {
+  display: flex; align-items: center; gap: 12px;
+  padding: 20px 22px 14px;
+  border-bottom: 1px dashed var(--border);
+}
+.chat-head img {
+  width: 44px; height: 44px; border-radius: 12px;
+  border: 2px solid var(--accent-soft); background: var(--accent-soft);
+  padding: 3px; image-rendering: pixelated;
+}
+.chat-title { font-family: 'Noto Serif JP', serif; font-size: 19px; font-weight: 700; }
+.chat-sub { font-size: 12px; color: var(--sub); }
+
+.messages {
+  padding: 18px 22px;
+  display: flex; flex-direction: column; gap: 12px;
+  min-height: 240px; max-height: 52vh; overflow-y: auto;
+}
+.msg { display: flex; gap: 8px; max-width: 88%; }
+.msg .bubble {
+  padding: 10px 14px; border-radius: 14px; font-size: 14px; line-height: 1.8;
+  white-space: pre-wrap; word-break: break-word;
+}
+.msg.momo { align-self: flex-start; }
+.msg.momo .bubble { background: var(--tile); border: 1px solid var(--border); border-top-left-radius: 4px; }
+.msg.user { align-self: flex-end; flex-direction: row-reverse; }
+.msg.user .bubble { background: var(--accent); color: #fff; border-top-right-radius: 4px; }
+.msg.typing .bubble { color: var(--sub); }
+
+form.chat-form {
+  display: flex; gap: 8px;
+  padding: 14px 16px 16px;
+  border-top: 1px dashed var(--border);
+}
+form.chat-form input {
+  flex: 1; padding: 11px 14px; font-size: 14px; font-family: inherit;
+  border: 1px solid var(--border); border-radius: 999px;
+  background: var(--surface); color: var(--text); outline: none;
+  min-width: 0;
+}
+form.chat-form input:focus { border-color: var(--accent); }
+form.chat-form button {
+  font-family: inherit; font-size: 14px; font-weight: 700; cursor: pointer;
+  padding: 11px 20px; border-radius: 999px; border: none;
+  background: var(--accent); color: #fff;
+  transition: opacity .15s;
+}
+form.chat-form button:hover { opacity: .85; }
+form.chat-form button:disabled { opacity: .5; cursor: default; }
+
+.note { font-size: 12px; color: var(--sub); margin-top: 12px; text-align: center; }
+footer { margin-top: 24px; font-size: 12px; color: var(--sub); opacity: .65; text-align: center; }
+footer a { color: var(--sub); }
+footer a:hover { color: var(--accent); }
+@media (max-width: 560px) {
+  .messages { padding: 14px; }
+  .msg { max-width: 94%; }
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+<header class="site"><a class="home" href="/">← 田中 志 トップ</a></header>
+
+<div class="card">
+  <div class="chat-head">
+    <img src="/assets/momo.svg" alt="もも">
+    <div>
+      <div class="chat-title">ももに聞く</div>
+      <div class="chat-sub">このサイトのこと、ブログのこと、概念教のことなど、気軽に聞いてね</div>
+    </div>
+  </div>
+
+  <div class="messages" id="messages"></div>
+
+  <form class="chat-form" id="form">
+    <input type="text" id="input" placeholder="ももへの質問を入力…" maxlength="1000" autocomplete="off" aria-label="質問を入力">
+    <button type="submit" id="send">送信</button>
+  </form>
+</div>
+
+<p class="note">ももはAIです。サイトの公開情報の範囲でお答えします。</p>
+<footer>© 2026 田中 志 ・ <a href="/feed.xml">RSS</a></footer>
+</div>
+
+<script>
+(function () {
+  var messagesEl = document.getElementById('messages');
+  var form = document.getElementById('form');
+  var input = document.getElementById('input');
+  var sendBtn = document.getElementById('send');
+  var history = []; // {role, content}
+  var busy = false;
+
+  var PREPARING = 'ごめんね、今はまだ準備中なの。もうちょっと待っててね';
+
+  function addMsg(role, text) {
+    var wrap = document.createElement('div');
+    wrap.className = 'msg ' + (role === 'user' ? 'user' : 'momo');
+    var bubble = document.createElement('div');
+    bubble.className = 'bubble';
+    bubble.textContent = text;
+    wrap.appendChild(bubble);
+    messagesEl.appendChild(wrap);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+    return wrap;
+  }
+
+  addMsg('momo', 'こんにちは、ももだよ🍑 このサイトのことや、ブログ・概念教について聞いてね。');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var text = input.value.trim();
+    if (!text || busy) return;
+    busy = true;
+    sendBtn.disabled = true;
+    input.value = '';
+    addMsg('user', text);
+    history.push({ role: 'user', content: text });
+    var typing = addMsg('momo', '……');
+    typing.classList.add('typing');
+
+    fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ messages: history.slice(-6) })
+    }).then(function (res) {
+      return res.json().then(function (data) { return { ok: res.ok, data: data }; });
+    }).then(function (r) {
+      typing.remove();
+      if (r.ok && r.data.reply) {
+        addMsg('momo', r.data.reply);
+        history.push({ role: 'assistant', content: r.data.reply });
+      } else {
+        addMsg('momo', PREPARING);
+      }
+    }).catch(function () {
+      typing.remove();
+      addMsg('momo', PREPARING);
+    }).finally(function () {
+      busy = false;
+      sendBtn.disabled = false;
+      input.focus();
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

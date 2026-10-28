@@ -5,6 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ブログを復活させました | ブログ | 田中 志</title>
 <meta name="description" content="しばらく閉じていた xdcyw.net のブログを、静的サイトとして復活させました。旧ブログの記事も選んで移植しています。">
+<link rel="canonical" href="https://xdcyw.net/blog/2026-10-26-hello/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ブログを復活させました">
+<meta property="og:description" content="しばらく閉じていた xdcyw.net のブログを、静的サイトとして復活させました。旧ブログの記事も選んで移植しています。">
+<meta property="og:url" content="https://xdcyw.net/blog/2026-10-26-hello/">
+<meta property="og:site_name" content="田中 志">
+<meta name="twitter:card" content="summary">
+<link rel="alternate" type="application/rss+xml" title="田中 志 ブログ" href="/feed.xml">
 <link rel="icon" href="/assets/momo.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -122,7 +130,37 @@ article img { max-width: 100%; border-radius: 10px; }
 nav.post-nav { margin-top: 24px; font-size: 14px; }
 nav.post-nav a { color: var(--sub); text-decoration: none; }
 nav.post-nav a:hover { color: var(--accent); }
+.pn-links { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 10px; }
+.pn-links a {
+  flex: 1; background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; padding: 10px 14px; font-size: 13px; color: var(--text);
+  box-shadow: var(--shadow); transition: border-color .15s, background .15s;
+}
+.pn-links a:hover { border-color: var(--accent); background: var(--hover-bg); color: var(--text); }
+.pn-links a.next { text-align: right; }
+.pn-links a span { display: block; font-size: 11px; color: var(--sub); }
+.pn-links a:only-child { flex: 0 1 48%; }
+.pn-links a.next:only-child { margin-left: auto; }
+.controls { margin-top: 22px; display: flex; flex-direction: column; gap: 10px; }
+.controls input[type="search"] {
+  width: 100%; padding: 11px 14px; font-size: 14px; font-family: inherit;
+  border: 1px solid var(--border); border-radius: 999px;
+  background: var(--surface); color: var(--text); outline: none;
+}
+.controls input[type="search"]:focus { border-color: var(--accent); }
+.filters { display: flex; gap: 8px; flex-wrap: wrap; }
+.filters button {
+  font-family: inherit; font-size: 12px; font-weight: 700; cursor: pointer;
+  padding: 5px 14px; border-radius: 999px;
+  border: 1px solid var(--border); background: var(--surface); color: var(--sub);
+  transition: border-color .15s, color .15s, background .15s;
+}
+.filters button:hover { border-color: var(--accent); color: var(--accent); }
+.filters button.active { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); }
+.no-results { display: none; color: var(--sub); font-size: 14px; text-align: center; padding: 18px 0 6px; }
 footer { margin-top: 24px; font-size: 12px; color: var(--sub); opacity: .65; text-align: center; }
+footer a { color: var(--sub); }
+footer a:hover { color: var(--accent); }
 @media (max-width: 560px) { article { padding: 32px 20px 28px; } }
 </style>
 </head>
@@ -138,8 +176,8 @@ footer { margin-top: 24px; font-size: 12px; color: var(--sub); opacity: .65; tex
 <p>旧ブログの記事から何本か選んで移植してあります（記事の冒頭に「旧ブログからの移植」と初出の日付を書いてあります）。昔の文章はそのまま残してあるので、今の私と意見が違うところもあるかもしれませんが、それも記録として。</p>
 <p>これからは、考えたこと、作ったもの、勉強の記録などを書いていく予定です。概念教や個人開発、司法試験の勉強の話が中心になると思います。</p>
 </article>
-<nav class="post-nav"><a href="/blog/">← 記事一覧へ</a></nav>
-<footer>© 2026 田中 志</footer>
+<nav class="post-nav"><div class="pn-links"><a class="prev" href="/blog/2025-12-31-tetsugakusha-ni-naritai-ga-watashi-ni-sainou-wa-aru-no-ka/"><span>← 古い記事</span>哲学者になりたいがわたしに才能はあるのか</a><a class="next" href="/blog/2026-10-26-momo-diary/"><span>新しい記事 →</span>もも日記 2026年10月26日</a></div><a href="/blog/">← 記事一覧へ</a></nav>
+<footer>© 2026 田中 志 ・ <a href="/feed.xml">RSS</a></footer>
 </div>
 </body>
 </html>
