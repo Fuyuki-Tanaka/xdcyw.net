@@ -134,7 +134,7 @@ form.chat-form {
   border-top: 1px dashed var(--border);
 }
 form.chat-form input {
-  flex: 1; padding: 11px 14px; font-size: 14px; font-family: inherit;
+  flex: 1; padding: 11px 14px; font-size: 16px; font-family: inherit;
   border: 1px solid var(--border); border-radius: 999px;
   background: var(--surface); color: var(--text); outline: none;
   min-width: 0;
@@ -145,6 +145,7 @@ form.chat-form button {
   padding: 11px 20px; border-radius: 999px; border: none;
   background: var(--accent); color: #fff;
   transition: opacity .15s;
+  touch-action: manipulation;
 }
 form.chat-form button:hover { opacity: .85; }
 form.chat-form button:disabled { opacity: .5; cursor: default; }
